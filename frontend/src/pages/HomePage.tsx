@@ -1,6 +1,6 @@
 import { ProductGrid } from "../components/ProductGrid";
 import { SectionHeading } from "../components/SectionHeading";
-import { pategoryGroups, products } from "../data/catalog";
+import { categoryGroups, products } from "../data/catalog";
 import type { Navigate } from "../types/types";
 import { filterBySearch } from "../utils/catalog";
 
