@@ -16,8 +16,8 @@ export function Header({
   return (
     <header className="site-header">
       <button className="brand" type="button" onClick={() => navigate("/")}>
-        <span className="brand-mark">M</span>
-        <span>ModeHaus</span>
+        <span className="brand-mark">E</span>
+        <span>Ecommerce Web Design</span>
       </button>
       <nav className="main-nav" aria-label="Primary navigation">
         <NavButton

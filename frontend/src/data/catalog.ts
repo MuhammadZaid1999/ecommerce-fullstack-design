@@ -4,6 +4,7 @@ export const products: Product[] = [
   {
     id: "woven-weekender-tote",
     name: "Woven Weekender Tote",
+    brand: "Aster & Co.",
     parentCategory: "Fashion",
     category: "Womens",
     price: 68,
@@ -22,6 +23,7 @@ export const products: Product[] = [
   {
     id: "linen-ease-shirt",
     name: "Linen Ease Shirt",
+    brand: "Northline",
     parentCategory: "Fashion",
     category: "Mens",
     price: 54,
@@ -36,6 +38,7 @@ export const products: Product[] = [
   {
     id: "ceramic-pour-over-set",
     name: "Ceramic Pour Over Set",
+    brand: "Kiln House",
     parentCategory: "Home & Living",
     category: "Kitchen",
     price: 82,
@@ -54,6 +57,7 @@ export const products: Product[] = [
   {
     id: "desk-charge-dock",
     name: "Desk Charge Dock",
+    brand: "Volt & Vale",
     parentCategory: "Electronics",
     category: "Mobile Phones",
     price: 96,
@@ -73,6 +77,7 @@ export const products: Product[] = [
   {
     id: "calm-clay-diffuser",
     name: "Calm Clay Diffuser",
+    brand: "Nua",
     parentCategory: "Wellness",
     category: "Aromatherapy",
     price: 44,
@@ -91,6 +96,7 @@ export const products: Product[] = [
   {
     id: "ribbed-knit-sweater",
     name: "Ribbed Knit Sweater",
+    brand: "Aster & Co.",
     parentCategory: "Fashion",
     category: "Womens",
     price: 74,
@@ -105,6 +111,7 @@ export const products: Product[] = [
   {
     id: "modular-desk-lamp",
     name: "Modular Desk Lamp",
+    brand: "Kiln House",
     parentCategory: "Home & Living",
     category: "Lighting",
     price: 118,
@@ -118,6 +125,7 @@ export const products: Product[] = [
   {
     id: "travel-tech-organizer",
     name: "Travel Tech Organizer",
+    brand: "Volt & Vale",
     parentCategory: "Electronics",
     category: "Laptops",
     price: 38,
@@ -135,6 +143,7 @@ export const products: Product[] = [
   {
     id: "daily-hydration-bottle",
     name: "Daily Hydration Bottle",
+    brand: "Nua",
     parentCategory: "Wellness",
     category: "Hydration",
     price: 32,
@@ -149,6 +158,7 @@ export const products: Product[] = [
   {
     id: "canvas-crossbody-pack",
     name: "Canvas Crossbody Pack",
+    brand: "Northline",
     parentCategory: "Fashion",
     category: "Mens",
     price: 46,
@@ -175,4 +185,15 @@ export const priceRanges = [
   { label: "Under $50", min: 0, max: 50 },
   { label: "$50 - $100", min: 50, max: 100 },
   { label: "$100+", min: 100, max: Infinity },
+];
+
+export const brandOptions = Array.from(
+  new Set(products.map((product) => product.brand)),
+).sort();
+
+export const ratingRanges = [
+  { label: "All ratings", min: 0 },
+  { label: "4.8 and up", min: 4.8 },
+  { label: "4.6 and up", min: 4.6 },
+  { label: "4.4 and up", min: 4.4 },
 ];

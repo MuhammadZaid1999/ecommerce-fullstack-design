@@ -2,14 +2,20 @@ import { useState } from "react";
 import { EmptyState } from "../components/EmptyState";
 import { ProductGrid } from "../components/ProductGrid";
 import {
+  brandOptions,
   categoryGroups,
   parentCategories,
-  priceRanges,
   products,
 } from "../data/catalog";
 import type { Navigate } from "../types/types";
 import { filterBySearch } from "../utils/catalog";
 
+const minCatalogPrice = Math.floor(
+  Math.min(...products.map((product) => product.price)),
+);
+const maxCatalogPrice = Math.ceil(
+  Math.max(...products.map((product) => product.price)),
+);
 export function ProductListingPage({
   addToCart,
   navigate,
@@ -21,16 +27,18 @@ export function ProductListingPage({
 }) {
   const [selectedParentCategory, setSelectedParentCategory] = useState("All");
   const [selectedChildCategory, setSelectedChildCategory] = useState("All");
-  const [selectedPrice, setSelectedPrice] = useState(priceRanges[0].label);
+  const [maxPrice, setMaxPrice] = useState(maxCatalogPrice);
+  const [selectedBrand, setSelectedBrand] = useState("All");
+  const [minRating, setMinRating] = useState(0);
   const selectedGroup = categoryGroups.find(
     (group) => group.name === selectedParentCategory,
   );
   const childCategories = selectedGroup
     ? selectedGroup.children
     : Array.from(new Set(products.map((product) => product.category)));
-  const priceRange =
-    priceRanges.find((range) => range.label === selectedPrice) ??
-    priceRanges[0];
+  const priceLabel = `$${minCatalogPrice} - $${maxPrice}`;
+  const ratingLabel =
+    minRating === 0 ? "All ratings" : `${minRating.toFixed(1)} stars and up`;
   const filteredProducts = filterBySearch(products, searchQuery).filter(
     (product) => {
       const matchesParent =
@@ -39,9 +47,17 @@ export function ProductListingPage({
       const matchesChild =
         selectedChildCategory === "All" ||
         product.category === selectedChildCategory;
-      const matchesPrice =
-        product.price >= priceRange.min && product.price <= priceRange.max;
-      return matchesParent && matchesChild && matchesPrice;
+      const matchesPrice = product.price <= maxPrice;
+      const matchesBrand =
+        selectedBrand === "All" || product.brand === selectedBrand;
+      const matchesRating = product.rating >= minRating;
+      return (
+        matchesParent &&
+        matchesChild &&
+        matchesPrice &&
+        matchesBrand &&
+        matchesRating
+      );
     },
   );
 
@@ -85,14 +101,39 @@ export function ProductListingPage({
               ))}
             </select>
           </label>
+          <label className="range-filter">
+            <span>Price range</span>
+            <input
+              min={minCatalogPrice}
+              max={maxCatalogPrice}
+              step="1"
+              type="range"
+              value={maxPrice}
+              onChange={(event) => setMaxPrice(Number(event.target.value))}
+            />
+            <small>{priceLabel}</small>
+          </label>
+          <label className="range-filter">
+            <span>Rating</span>
+            <input
+              min="0"
+              max="5"
+              step="0.1"
+              type="range"
+              value={minRating}
+              onChange={(event) => setMinRating(Number(event.target.value))}
+            />
+            <small>{ratingLabel}</small>
+          </label>
           <label>
-            Price range
+            Brand
             <select
-              value={selectedPrice}
-              onChange={(event) => setSelectedPrice(event.target.value)}
+              value={selectedBrand}
+              onChange={(event) => setSelectedBrand(event.target.value)}
             >
-              {priceRanges.map((range) => (
-                <option key={range.label}>{range.label}</option>
+              <option>All</option>
+              {brandOptions.map((brand) => (
+                <option key={brand}>{brand}</option>
               ))}
             </select>
           </label>

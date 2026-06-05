@@ -1,4 +1,5 @@
 import type { Navigate, Product } from "../types/types";
+import { StarRating } from "./StarRating";
 import { formatCategory } from "../utils/catalog";
 import { EmptyState } from "./EmptyState";
 
@@ -36,7 +37,10 @@ export function ProductGrid({
             <h2>{product.name}</h2>
             <div className="product-meta">
               <strong>${product.price.toFixed(2)}</strong>
-              <span>{product.rating.toFixed(1)} rating</span>
+              <span className="rating-meta">
+                <StarRating rating={product.rating} />
+                <span>{product.rating.toFixed(1)}</span>
+              </span>
             </div>
             <div className="product-actions">
               <button type="button" onClick={() => addToCart(product.id)}>

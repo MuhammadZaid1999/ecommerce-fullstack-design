@@ -1,5 +1,6 @@
 import { products } from "../data/catalog";
 import type { Navigate } from "../types/types";
+import { StarRating } from "../components/StarRating";
 import { formatCategory } from "../utils/catalog";
 import { NotFoundPage } from "./NotFoundPage";
 
@@ -24,7 +25,10 @@ export function ProductDetailsPage({
       <div className="details-copy">
         <p className="eyebrow">{formatCategory(product)}</p>
         <h1>{product.name}</h1>
-        <p className="rating">Rated {product.rating.toFixed(1)} out of 5</p>
+        <div className="detail-rating">
+          <StarRating rating={product.rating} />
+          <span>{product.rating.toFixed(1)} out of 5</span>
+        </div>
         <p className="detail-price">${product.price.toFixed(2)}</p>
         <p>{product.description}</p>
         <ul>
