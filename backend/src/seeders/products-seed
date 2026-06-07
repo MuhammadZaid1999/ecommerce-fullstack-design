@@ -1,0 +1,15 @@
+import mongoose from "mongoose";
+import { connectDB } from "../config/db.js";
+import { env } from "../config/env.js";
+import products from "./data/products.js";
+import { Product } from "../models/Product.js";
+
+await connectDB(env.mongoUri);
+
+await Product.deleteMany({});
+
+await Product.insertMany(products);
+
+console.log(`$${products.length} products.`);
+
+await mongoose.disconnect();
