@@ -1,16 +1,39 @@
-const categories = [
-  { id: "electronics", name: "Electronics", parentId: null },
-  { id: "mobile-phones", name: "Mobile Phones", parentId: "electronics" },
-  { id: "laptops", name: "Laptops", parentId: "electronics" },
-  { id: "fashion", name: "Fashion", parentId: null },
-  { id: "mens", name: "Mens", parentId: "fashion" },
-  { id: "womens", name: "Womens", parentId: "fashion" },
-  { id: "home-and-living", name: "Home & Living", parentId: null },
-  { id: "kitchen", name: "Kitchen", parentId: "home-and-living" },
-  { id: "lighting", name: "Lighting", parentId: "home-and-living" },
-  { id: "wellness", name: "Wellness", parentId: null },
-  { id: "aromatherapy", name: "Aromatherapy", parentId: "wellness" },
-  { id: "hydration", name: "Hydration", parentId: "wellness" },
-];
+const categories = {
+  // ROOT
+  root: [
+    { name: "electronics", parentId: null },
+    { name: "fashion", parentId: null },
+  ],
+
+  // Level 1 Categories
+  level1: [
+    { name: "mobile phones", parentId: "electronics" },
+    { name: "laptops", parentId: "electronics" },
+    { name: "men", parentId: "fashion" },
+    { name: "women", parentId: "fashion" },
+  ],
+
+  // Level 2 Categories
+  level2: [
+    { name: "android phones", parentId: "mobile phones" },
+    { name: "iphones", parentId: "mobile phones" },
+    { name: "gaming phones", parentId: "mobile phones" },
+    { name: "budget phones", parentId: "mobile phones" },
+    { name: "gaming laptops", parentId: "laptops" },
+    { name: "ultrabooks", parentId: "laptops" },
+    { name: "business laptops", parentId: "laptops" },
+    { name: "macbooks", parentId: "laptops" },
+    { name: "shirts", parentId: "men" },
+    { name: "t-shirts", parentId: "men" },
+    { name: "jeans", parentId: "men" },
+    { name: "shoes", parentId: "men" },
+    { name: "watches", parentId: "men" },
+    { name: "dresses", parentId: "women" },
+    { name: "tops", parentId: "women" },
+    { name: "heels", parentId: "women" },
+    { name: "bags", parentId: "women" },
+    { name: "jewelry", parentId: "women" },
+  ],
+};
 
 export default categories;

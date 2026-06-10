@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { Brand } from "../models/Brand.js";
-import { buildPaginationMeta, getSkip } from "../utils/pagination.js";
-import { mapBrand } from "../mappers/catalog.mapper.js";
-import type { BrandQueryDto } from "../dtos/brand.dto.js";
+import { Brand } from "@/models/Brand";
+import { buildPaginationMeta, getSkip } from "@/utils/pagination";
+import { mapBrand } from "@/mappers/catalog.mapper";
+import type { BrandQueryDto } from "@/dtos/brand.dto";
 
 export async function getBrands(request: Request, response: Response) {
   const query = request.query as unknown as BrandQueryDto;

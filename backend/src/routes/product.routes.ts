@@ -6,14 +6,14 @@ import {
   getProductById,
   getProducts,
   updateProduct,
-} from "../controllers/product.controller.js";
-import { entityIdSchema } from "../dtos/common.dto.js";
+} from "@/controllers/product.controller";
+import { entityIdSchema } from "@/dtos/common.dto";
 import {
   createProductSchema,
   productQuerySchema,
   updateProductSchema,
-} from "../dtos/product.dto.js";
-import { validate } from "../middleware/validate.js";
+} from "@/dtos/product.dto";
+import { validate } from "@/middleware/validate";
 
 const idParamSchema = z.object({ id: entityIdSchema });
 

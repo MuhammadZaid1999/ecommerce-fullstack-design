@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { entityIdSchema } from "./common.dto.js";
+import { entityIdSchema } from "./common.dto";
 
 const booleanQuerySchema = z
   .string()

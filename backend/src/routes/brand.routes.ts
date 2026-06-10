@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getBrands } from "../controllers/brand.controller.js";
-import { brandQuerySchema } from "../dtos/brand.dto.js";
-import { validate } from "../middleware/validate.js";
+import { getBrands } from "@/controllers/brand.controller";
+import { brandQuerySchema } from "@/dtos/brand.dto";
+import { validate } from "@/middleware/validate";
 
 export const brandRouter = Router();
 

@@ -3,12 +3,12 @@ import type {
   CreateProductDto,
   ProductQueryDto,
   UpdateProductDto,
-} from "../dtos/product.dto.js";
-import { Brand } from "../models/Brand.js";
-import { Category } from "../models/Category.js";
-import { Product } from "../models/Product.js";
-import { mapProduct } from "../mappers/catalog.mapper.js";
-import { buildPaginationMeta, getSkip } from "../utils/pagination.js";
+} from "@/dtos/product.dto";
+import { Brand } from "@/models/Brand";
+import { Category } from "@/models/Category";
+import { Product } from "@/models/Product";
+import { mapProduct } from "@/mappers/catalog.mapper";
+import { buildPaginationMeta, getSkip } from "@/utils/pagination";
 
 export async function getProducts(request: Request, response: Response) {
   const query = request.query as unknown as ProductQueryDto;

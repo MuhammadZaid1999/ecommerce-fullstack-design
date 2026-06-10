@@ -1,15 +1,16 @@
-import mongoose from "mongoose";
-import { connectDB } from "../config/db.js";
-import { env } from "../config/env.js";
-import brands from "./data/brands.js";
-import { Brand } from "../models/Brand.js";
+import brands from "./data/brands";
+import { Brand } from "@/models/Brand";
 
-await connectDB(env.mongoUri);
+export async function seedBrands() {
+  await Brand.deleteMany({});
 
-await Brand.deleteMany({});
+  const brand = await Brand.insertMany(brands);
 
-await Brand.insertMany(brands);
+  console.log(`brands seeded successfully.`);
 
-console.log(`$${brands.length} brands.`);
+  const map = Object.fromEntries(
+    brand.map((b) => [b.name.toLowerCase(), b._id]),
+  );
 
-await mongoose.disconnect();
+  return map;
+}

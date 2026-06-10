@@ -5,10 +5,10 @@ import express, {
   type Response,
 } from "express";
 import morgan from "morgan";
-import { env } from "./config/env.js";
-import { brandRouter } from "./routes/brand.routes.js";
-import { categoryRouter } from "./routes/category.routes.js";
-import { productRouter } from "./routes/product.routes.js";
+import { env } from "@/config/env";
+import { brandRouter } from "@/routes/brand.routes";
+import { categoryRouter } from "@/routes/category.routes";
+import { productRouter } from "@/routes/product.routes";
 
 export const app = express();
 

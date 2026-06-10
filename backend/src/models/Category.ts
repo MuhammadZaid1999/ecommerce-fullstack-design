@@ -2,29 +2,24 @@ import { model, Schema, type InferSchemaType } from "mongoose";
 
 const categorySchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-    },
     name: {
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
+
     parentId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "Category",
       default: null,
-      trim: true,
-      lowercase: true,
+      index: true,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
-
-categorySchema.index({ parentId: 1 });
 
 export type CategoryDocument = InferSchemaType<typeof categorySchema>;
 

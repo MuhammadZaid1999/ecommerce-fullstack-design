@@ -1,6 +1,6 @@
-import type { BrandDocument } from "../models/Brand.js";
-import type { CategoryDocument } from "../models/Category.js";
-import type { ProductDocument } from "../models/Product.js";
+import type { BrandDocument } from "@/models/Brand";
+import type { CategoryDocument } from "@/models/Category";
+import type { ProductDocument } from "@/models/Product";
 
 type ProductLike = ProductDocument & { createdAt?: Date; updatedAt?: Date };
 type CategoryLike = CategoryDocument & { createdAt?: Date; updatedAt?: Date };

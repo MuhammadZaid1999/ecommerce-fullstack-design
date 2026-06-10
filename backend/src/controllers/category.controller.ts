@@ -2,10 +2,10 @@ import type { Request, Response } from "express";
 import {
   categoryQuerySchema,
   type CategoryQueryDto,
-} from "../dtos/category.dto.js";
-import { Category } from "../models/Category.js";
-import { mapCategory } from "../mappers/catalog.mapper.js";
-import { buildPaginationMeta, getSkip } from "../utils/pagination.js";
+} from "@/dtos/category.dto";
+import { Category } from "@/models/Category";
+import { mapCategory } from "@/mappers/catalog.mapper";
+import { buildPaginationMeta, getSkip } from "@/utils/pagination";
 
 export async function getCategories(request: Request, response: Response) {
   const query = request.query as unknown as CategoryQueryDto;
